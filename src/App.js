@@ -33,14 +33,13 @@ const foodILike = [
       "https://recipe1.ezmember.co.kr/cache/recipe/2015/04/04/0461907459756bc3a56472da407a1a9d1.jpg",
   },
 ];
+
+function renderFood(dish) {
+  return <Food name={dish.name} picture={dish.image} />;
+}
+
 function App() {
-  return (
-    <div>
-      {foodILike.map((dish) => (
-        <Food name={dish.name} picture={dish.image} />
-      ))}
-    </div>
-  );
+  return <div>{foodILike.map((dish) => renderFood)}</div>;
 }
 
 export default App;
