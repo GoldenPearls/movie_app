@@ -39,7 +39,7 @@ function renderFood(dish) {
 }
 
 function App() {
-  return <div>{foodILike.map((dish) => renderFood)}</div>;
+  return <div>{foodILike.map((dish) => renderFood(dish))}</div>;
 }
 
 export default App;
