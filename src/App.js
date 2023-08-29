@@ -8,14 +8,36 @@ function Festival({ name, region, picture, rating }) {
     <div>
       <h2> {name} </h2>
       <h3> 지역 : {region} </h3>
-      <h4>{rating}/5.0</h4>
+      <StartRating rating={rating} />
       <img src={picture} alt={name}></img>
     </div>
   );
 }
 
-<i className="item-rating pointer zmdi zmdi-star-outline"></i>;
-<i className="item-rating pointer zmdi zmdi-star-outline"> </i>;
+function StartRating({ rating }) {
+  const maxRating = 5; // 별의 최대 개수
+  const filledStars = Math.floor(rating); // 채워진 별의 개수
+  const emptyStars = maxRating - filledStars; // 빈 별의 개수
+
+  const stars = [];
+  for (let i = 0; i < filledStars; i++) {
+    stars.push(
+      <span key={i} className="star filled">
+        ★
+      </span>
+    );
+  }
+  for (let i = 0; i < emptyStars; i++) {
+    stars.push(
+      <span key={filledStars + i} className="star">
+        ☆
+      </span>
+    );
+  }
+
+  return <div className="star-rating">{stars}</div>;
+}
+
 const festivalILike = [
   {
     id: 1,
