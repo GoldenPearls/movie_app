@@ -7,19 +7,37 @@ class App extends React.Component {
   };
 
   add = () => {
-    //this.state.count = 1;
     this.setState((current) => ({ count: this.state.count + 1 })); //current는 인자값
   };
 
   minus = () => {
-    // console.log('minus')
-    //1. this.state.count = -1; state(private)는 직접접근이 안되기에 setState로 간접접근(getter, setter)
-    // 2. this.setState({ count: this.state.count - 1 }); //count state를 -1만큼 감소
-    // 3. current인자를 받아 객체  { count: this.state.count - 1 }를 반환하는 함수로 작성
     this.setState((current) => ({ count: this.state.count + -1 }));
   };
 
+  constructor(props) {
+    //1. constructor가 먼저 실행되고
+    super(props);
+    console.log("hello constructor");
+  }
+
+  componentDidMount() {
+    // 3. 그 다음에 componentDidMount
+    console.log("I'm rendering!");
+  }
+
+  componentDidUpdate() {
+    // 4. 그 다음에 componentDidUpdate
+    console.log("I just updated");
+  }
+
+  componentWilUpdate() {
+    // 5. 그 다음에 삭제 될 때
+    console.log("Goodbye!");
+  }
+
   render() {
+    // 2. 그 다음에 render가 실행
+    console.log("hello render!");
     return (
       <div>
         <h1>The number is {this.state.count}</h1>
